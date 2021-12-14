@@ -1,0 +1,51 @@
+﻿@model WebUI.Models.Vehicle
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="form-group-row">
+            <h2 class="text-info pl-3">Add Vehicle </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group">
+                <label asp-for="Model"></label>
+                <input asp-for="Model" class="form-control" placeholder="vehicle make" />
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleId"></label>
+                <input asp-for="VehicleId" class="form-control" placeholder="system generated id" />
+            </div>
+            <div class="form-group">
+                <label asp-for="RegNumber"></label>
+                <input asp-for="RegNumber" class="form-control" placeholder="national registration as issued by transport" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NetWeight"></label>
+                <input asp-for="NetWeight" class="form-control" placeholder="net weight of the vehicle" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Depot"></label>
+                <select asp-for="Depot" class="form-control" asp-items="Html.GetEnumSelectList<Depot>()"></select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive"></label>
+                <input asp-for="IsActive" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <div class="col-8 offset-4 row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-100" value="Create" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

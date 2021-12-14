@@ -1,0 +1,82 @@
+﻿@model WebUI.Models.DepotVehicleDetail
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="form-group-row">
+            <h2 class="text-info pl-3">Add Depot Vehicle </h2>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group">
+                <label asp-for="VehicleId"></label>
+                <input asp-for="VehicleId" class="form-control" placeholder="System assigned or allocated id" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Depot"></label>
+                <select asp-for="Depot" class="form-control" asp-items="Html.GetEnumSelectList<Depot>()"></select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="WaitingForLoad"></label>
+                <input asp-for="WaitingForLoad" class="form-control" placeholder="true if waiting else false" />
+            </div>
+
+            <div class="form-group">
+                <div class="col-8 offset-4 row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-100" value="Create" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="aModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="aModalLabel">Message</h4>
+            </div>
+            <div class="modal-body">
+                @ViewBag.Result
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    @if (ViewBag.Result != null)
+    {
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#aModal").modal('show');
+            });
+        </script>
+    }
+}
+@section Scripts{
+    <script>
+    $(document).keypress(function(event){
+
+	var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            //window.location.href = "/salaryLogViewmodel/SalaryList";
+            window.location.href = "/DepotVehicleDetails/Index";
+	}
+
+});
+    </script>
+}

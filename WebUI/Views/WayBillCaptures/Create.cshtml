@@ -1,0 +1,34 @@
+﻿@model WebUI.Models.WayBillCapture
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="form-group-row">
+            <h2 class="text-info pl-3">Add Way Bill </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group">
+                <label asp-for="Waybillno"></label>
+                <input asp-for="Waybillno" class="form-control" placeholder="Leave blank if you do not have a way bill no" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CapturingStage"></label>
+                <input asp-for="CapturingStage" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <div class="col-8 offset-4 row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-100" value="Create" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
